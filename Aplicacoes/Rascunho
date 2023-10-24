@@ -1,0 +1,34 @@
+    nome da classe
+    atributos
+    construtores
+    encapsulamento
+    metodos
+
+Criar um Programa que realize:
+
+1-Cadastro de produto
+2-realizar venda
+3-conferencia de estoque
+___________________________________________________________
+1-Cadastro de produto:
+
+    1.a -Massas (OK)
+    Ja esta cadastrando + de 1 produto (OK)
+    1.b Bebida (OK)
+    Ja esta cadastrando + de 1 produto (OK)
+    1.c Sorvetes()
+    Ja esta cadastrando + de 1 produto (OK)
+
+Proxima atividade:
+
+Cadastro da Seção de sorvetes.
+Criar um menu organizado para o Usuario.
+incluir esse menu no termino do processo.
+Criar a opção que vai sair do while.
+Criar uma impressão organizada dos valores.
+Subir para o Github
+___________________________________________________________
+
+
+
+
