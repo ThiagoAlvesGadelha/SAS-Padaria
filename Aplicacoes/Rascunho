@@ -6,7 +6,7 @@
 
 Criar um Programa que realize:
 
-1-Cadastro de produto
+1-Cadastro de produto OK
 2-realizar venda
 3-conferencia de estoque
 ___________________________________________________________
@@ -16,16 +16,16 @@ ___________________________________________________________
     Ja esta cadastrando + de 1 produto (OK)
     1.b Bebida (OK)
     Ja esta cadastrando + de 1 produto (OK)
-    1.c Sorvetes()
+    1.c Sorvetes(OK)
     Ja esta cadastrando + de 1 produto (OK)
 
 Proxima atividade:
 
-Cadastro da Seção de sorvetes.
-Criar um menu organizado para o Usuario.
-incluir esse menu no termino do processo.
-Criar a opção que vai sair do while.
-Criar uma impressão organizada dos valores.
+Cadastro da Seção de sorvetes. OK
+Criar um menu organizado para o Usuario. OK
+incluir esse menu no termino do processo. OK
+Criar a opção que vai sair do while.      OK
+Criar uma impressão organizada dos valores. OK
 Subir para o Github
 ___________________________________________________________
 

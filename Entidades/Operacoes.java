@@ -8,22 +8,20 @@ public class Operacoes {
     private GeladeiraBebidas geladeira;
     private FreezerSorvetes freezer;
 
-    public Operacoes(BalcaoPadaria balcao, GeladeiraBebidas geladeira) {
+    public Operacoes(BalcaoPadaria balcao, GeladeiraBebidas geladeira, FreezerSorvetes freezer) {
         this.balcao = balcao;
         this.geladeira = geladeira;
+        this.freezer = freezer;
     }
 
     public void menu() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Seja bem vindo");
-        System.out.println("O que vamos fazer");
-        System.out.println("Cadastro");
-        System.out.println("Realizar venda");
-        System.out.println("Conferir estoque");
-        System.out.println("Para cadastro digite a opção");
+        System.out.println("########## Seja bem vindo #########");
+        System.out.println("O que deseja cadastrar?");
         System.out.println("Digite 1 para =  Balcão padaria");
         System.out.println("Digite 2 para = Bebidas");
         System.out.println("Digite 3 para = Sorvetes");
+        System.out.println("###################################");
         opcao = scan.nextInt();
         scan.nextLine(); // FIM DO MENU
 
@@ -45,8 +43,14 @@ public class Operacoes {
             scan.nextLine();
             Massas massas = new Massas(codigo, nome, valor, estoque);
             this.balcao.addMassas(massas);
-            System.out.println("Deseja cadastrar outra massa ?");
-            System.out.println("Digite 1 para cadastrar uma nova ou 0 para sair");
+            System.out.println("Produto Cadastrado!");
+            System.out.println("___________________________________");
+            System.out.println("Ainda vamos fazer algo?");
+            System.out.println("Digite 1 para =  Balcão padaria");
+            System.out.println("Digite 2 para = Bebidas");
+            System.out.println("Digite 3 para = Sorvetes");
+            System.out.println("Digite 4 para = Sair");
+            System.out.println("___________________________________");
             opcao = scan.nextInt();
             scan.nextLine();
             while (opcao < 1 || opcao > 5) {
@@ -68,8 +72,14 @@ public class Operacoes {
             scan.nextLine();
             Bebidas bebidas = new Bebidas(codigo, nome, valor, estoque);
             this.geladeira.addBebidas(bebidas);
-            System.out.println("Deseja cadastrar outra bebida ?");
-            System.out.println("Digite 1 para cadastrar uma nova ou 3 para sair");
+            System.out.println("Produto Cadastrado!");
+            System.out.println("___________________________________");
+            System.out.println("Ainda vamos fazer algo?");
+            System.out.println("Digite 1 para =  Balcão padaria");
+            System.out.println("Digite 2 para = Bebidas");
+            System.out.println("Digite 3 para = Sorvetes");
+            System.out.println("Digite 4 para = Sair");
+            System.out.println("___________________________________");
             opcao = scan.nextInt();
             scan.nextLine();
             while (opcao < 1 || opcao > 5) {
@@ -79,27 +89,34 @@ public class Operacoes {
             }
         }
         while (opcao == 3) {//SEÇÃO CADASTRO DO FREEZER DE SORVETES
-            System.out.println("Digite o nome da bebida");
+            System.out.println("Digite o nome do sorvete");
             String nome = scan.nextLine();
-            System.out.println("Digite o codigo do bebida: ");
+            System.out.println("Digite o codigo do sorvete: ");
             int codigo = scan.nextInt();
             scan.nextLine();
-            System.out.println("Digite o valor unitario do produto");
+            System.out.println("Digite o valor unitario do sorvete");
             double valor = Double.parseDouble(scan.nextLine());
             System.out.println("Digite a quantidade do estoque");
             int estoque = scan.nextInt();
             scan.nextLine();
-            Bebidas bebidas = new Bebidas(codigo, nome, valor, estoque);
-            this.geladeira.addBebidas(bebidas);
-            System.out.println("Deseja cadastrar outra bebida ?");
-            System.out.println("Digite 1 para cadastrar uma nova ou 3 para sair");
+            Sorvetes sorvetes = new Sorvetes(codigo, nome, valor, estoque);
+            this.freezer.addSorvetes(sorvetes);
+            System.out.println("Produto Cadastrado!");
+            System.out.println("___________________________________");
+            System.out.println("Ainda vamos fazer algo?");
+            System.out.println("Digite 1 para =  Balcão padaria");
+            System.out.println("Digite 2 para = Bebidas");
+            System.out.println("Digite 3 para = Sorvetes");
+            System.out.println("Digite 4 para = Sair");
+            System.out.println("___________________________________");
             opcao = scan.nextInt();
             scan.nextLine();
-            while (opcao < 1 || opcao > 4) {
+            while (opcao < 1 || opcao > 5) {
                 System.out.println("Digite uma opcao valida");
                 opcao = scan.nextInt();
                 scan.nextLine();
             }
         }
     }
+
 }
