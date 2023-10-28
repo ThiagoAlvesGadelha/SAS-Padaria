@@ -7,13 +7,14 @@ public class Operacoes {
     private BalcaoPadaria balcao;
     private GeladeiraBebidas geladeira;
     private FreezerSorvetes freezer;
+    public Usuario saldo;
+    public double novosaldo;
 
     public Operacoes(BalcaoPadaria balcao, GeladeiraBebidas geladeira, FreezerSorvetes freezer) {
         this.balcao = balcao;
         this.geladeira = geladeira;
         this.freezer = freezer;
     }
-
     public void menu() {
         Scanner scan = new Scanner(System.in);
         System.out.println("########## Seja bem vindo #########");
@@ -115,6 +116,212 @@ public class Operacoes {
                 System.out.println("Digite uma opcao valida");
                 opcao = scan.nextInt();
                 scan.nextLine();
+            }
+        }
+    }
+    public void Credito(double valor){
+        this.saldo.setSaldo(valor);
+    }
+    public void Debito(double valor){
+        this.novosaldo = this.saldo.getSaldo() - valor;
+        this.saldo.setSaldo(this.novosaldo);
+        if (valor > this.saldo.getSaldo()){
+            System.out.println("Compra não aprovada \n" +
+                    "Seu saldo é: R$ " + this.saldo +".");
+        }else{
+            System.out.println("Compra aprovada no valor de : R$ " + valor +".");
+            System.out.println("Saldo disponível: R$ "+this.saldo);
+        }
+    }
+    public void ListProdutosBalcaoPadaria(){
+        BalcaoPadaria balcaoPadaria = new BalcaoPadaria();
+        int numero = 0;
+        for (Massas elemento : balcaoPadaria.getMassas()) {
+            System.out.println("Seção Balcão");
+            System.out.println("Produto - " + numero++ +"\n"+
+                    "Nome do produto: "+ elemento.getNome()+". \n " +
+                    "Codigo do Produto: "+ elemento.getCodigo()+". \n" +
+                    "Preço da und: "+elemento.getValorUnitario()+". \n" +
+                    "Estoque disponível: "+elemento.getEstoque()+". \n");
+        }
+
+    }
+    public void ListProdutosGeladeiraBebidas(){
+        GeladeiraBebidas geladeiraBebidas = new GeladeiraBebidas();
+        int numero = 0;
+        for (Bebidas elemento : geladeiraBebidas.getBebidas()) {
+            System.out.println("Seção Geladeira de Bebidas");
+            System.out.println("Produto - " + numero++ +"\n"+
+                    "Nome do produto: "+ elemento.getNome()+". \n " +
+                    "Codigo do Produto: "+ elemento.getCodigo()+". \n" +
+                    "Preço da und: "+elemento.getValorUnitario()+". \n" +
+                    "Estoque disponível: "+elemento.getEstoque()+". \n");
+        }
+    }
+    public void ListProdutosFreezerSorvetes(){
+        FreezerSorvetes freezerSorvetes = new FreezerSorvetes();
+        for (Sorvetes elemento : freezerSorvetes.getSorvetes()) {
+            int numero = 0;
+            System.out.println("Seção Balcão");
+            System.out.println("Produto - " + numero++ +"\n"+
+                    "Nome do produto: "+ elemento.getNome()+". \n " +
+                    "Codigo do Produto: "+ elemento.getCodigo()+". \n" +
+                    "Preço da und: "+elemento.getValorUnitario()+". \n" +
+                    "Estoque disponível: "+elemento.getEstoque()+". \n");
+        }
+
+    }
+    public void Comprarproduto(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Escolha a seção que gostaria de comprar");
+        System.out.println("Digite 1 para: Seção Freezer");
+        System.out.println("Digite 2 para: Seção Balcão");
+        System.out.println("Digite 3 para: Seção Geladeira");
+        opcao = scan.nextInt();scan.nextLine();
+
+        while (opcao < 1 || opcao > 3){
+            System.out.println("Digite uma opção valida");
+            opcao = scan.nextInt();scan.nextLine();
+        }
+
+        while (opcao == 1){
+            FreezerSorvetes freezerSorvetes = new FreezerSorvetes();
+            System.out.println("Seja bem vindo a Seção Freezer");
+            System.out.println("Esses são nossos produtos disponíveis");
+            ListProdutosFreezerSorvetes();
+
+            int quantidadeItens = freezerSorvetes.getSorvetes().size();
+
+            System.out.println("Digite: 1 para: Produto 1 \n" +
+                    "Ou digite outro numero para escolher outro produto");
+            int numero = scan.nextInt();scan.nextLine();
+
+            while (numero < 1 || numero > quantidadeItens ){
+                System.out.println("Digite um numero valido");
+                numero = scan.nextInt();scan.nextLine();
+            }
+            int indiceDesejado = numero--;
+            Sorvetes elementoDesejado = freezerSorvetes.getSorvetes().get(indiceDesejado);
+            System.out.println("Seção Balcão de Massas \n" +
+                    "Nome do produto: " + elementoDesejado.getNome() + ". \n " +
+                    "Codigo do Produto: " + elementoDesejado.getCodigo() + ". \n" +
+                    "Preço da und: " + elementoDesejado.getValorUnitario() + ". \n" +
+                    "Estoque disponível: " + elementoDesejado.getEstoque() + ". \n");
+
+            System.out.println("Quantas unidades vai querer ?");
+            numero = scan.nextInt();scan.nextLine();
+
+            while (numero < elementoDesejado.getEstoque() ||numero > elementoDesejado.getEstoque()){
+                System.out.println("Nosso estoque é de apenas: "+ elementoDesejado.getEstoque());
+                System.out.println("Digite um numero valido");
+                System.out.println("Quantas unidades vai querer ?");
+                numero = scan.nextInt();scan.nextLine();
+            }
+
+            double total = numero * elementoDesejado.getValorUnitario();
+            System.out.println("O total é de: R$ " + total);
+            System.out.println("Insira seu cartão de Debito");
+            if (total > this.saldo.getSaldo()){
+                System.out.println("Compra não aprovada \n" +
+                        "Seu saldo é: R$ " + this.saldo +".");
+                System.out.println("A operação será finalizada, e o senhor poderá retornar quando for resolvido.");
+            } else {
+                Debito(total);
+                System.out.println("Obrigado e volte sempre");
+            }
+        }
+
+        while (opcao == 2){
+            BalcaoPadaria balcaoPadaria = new BalcaoPadaria();
+            System.out.println("Seja bem vindo a Seção Balcão");
+            System.out.println("Esses são nossos produtos disponíveis");
+            ListProdutosBalcaoPadaria();
+
+            int quantidadeItens = balcaoPadaria.getMassas().size();
+
+            System.out.println("Digite: 1 para: Produto 1 \n" +
+                    "Ou digite outro numero para escolher outro produto");
+            int numero = scan.nextInt();scan.nextLine();
+
+            while (numero < 1 || numero > quantidadeItens ){
+                System.out.println("Digite um numero valido");
+                numero = scan.nextInt();scan.nextLine();
+            }
+            int indiceDesejado = numero--;
+            Massas elementoDesejado = balcaoPadaria.getMassas().get(indiceDesejado);
+            System.out.println("Seção Balcão de Massas \n" +
+                    "Nome do produto: " + elementoDesejado.getNome() + ". \n " +
+                    "Codigo do Produto: " + elementoDesejado.getCodigo() + ". \n" +
+                    "Preço da und: " + elementoDesejado.getValorUnitario() + ". \n" +
+                    "Estoque disponível: " + elementoDesejado.getEstoque() + ". \n");
+
+            System.out.println("Quantas unidades vai querer ?");
+            numero = scan.nextInt();scan.nextLine();
+
+            while (numero < elementoDesejado.getEstoque() ||numero > elementoDesejado.getEstoque()){
+                System.out.println("Nosso estoque é de apenas: "+ elementoDesejado.getEstoque());
+                System.out.println("Digite um numero valido");
+                System.out.println("Quantas unidades vai querer ?");
+                numero = scan.nextInt();scan.nextLine();
+            }
+
+            double total = numero * elementoDesejado.getValorUnitario();
+            System.out.println("O total é de: R$ " + total);
+            System.out.println("Insira seu cartão de Debito");
+            if (total > this.saldo.getSaldo()){
+                System.out.println("Compra não aprovada \n" +
+                        "Seu saldo é: R$ " + this.saldo +".");
+                System.out.println("A operação será finalizada, e o senhor poderá retornar quando for resolvido.");
+            } else {
+                Debito(total);
+                System.out.println("Obrigado e volte sempre");
+            }
+        }
+
+        while (opcao == 3){
+            GeladeiraBebidas geladeiraBebidas = new GeladeiraBebidas();
+            System.out.println("Seja bem vindo a Seção Balcão");
+            System.out.println("Esses são nossos produtos disponíveis");
+            ListProdutosGeladeiraBebidas();
+
+            int quantidadeItens = geladeiraBebidas.getBebidas().size();
+
+            System.out.println("Digite: 1 para: Produto 1 \n" +
+                    "Ou digite outro numero para escolher outro produto");
+            int numero = scan.nextInt();scan.nextLine();
+
+            while (numero < 1 || numero > quantidadeItens ){
+                System.out.println("Digite um numero valido");
+                numero = scan.nextInt();scan.nextLine();
+            }
+            int indiceDesejado = numero--;
+            Bebidas elementoDesejado = geladeiraBebidas.getBebidas().get(indiceDesejado);
+            System.out.println("Seção Balcão de Massas \n" +
+                    "Nome do produto: " + elementoDesejado.getNome() + ". \n " +
+                    "Codigo do Produto: " + elementoDesejado.getCodigo() + ". \n" +
+                    "Preço da und: " + elementoDesejado.getValorUnitario() + ". \n" +
+                    "Estoque disponível: " + elementoDesejado.getEstoque() + ". \n");
+
+            System.out.println("Quantas unidades vai querer ?");
+            numero = scan.nextInt();scan.nextLine();
+
+            while (numero < elementoDesejado.getEstoque() ||numero > elementoDesejado.getEstoque()){
+                System.out.println("Nosso estoque é de apenas: "+ elementoDesejado.getEstoque());
+                System.out.println("Digite um numero valido");
+                System.out.println("Quantas unidades vai querer ?");
+                numero = scan.nextInt();scan.nextLine();
+            }
+
+            double total = numero * elementoDesejado.getValorUnitario();
+            System.out.println("O total é de: R$ " + total);
+            System.out.println("Insira seu cartão de Debito");
+            if (total > this.saldo.getSaldo()){
+                System.out.println("Compra não aprovada \n" +
+                        "Seu saldo é: R$ " + this.saldo +".");
+                System.out.println("A operação será finalizada, e o senhor poderá retornar quando for resolvido.");
+            } else {
+                Debito(total);
+                System.out.println("Obrigado e volte sempre");
             }
         }
     }

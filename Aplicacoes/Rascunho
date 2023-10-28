@@ -7,9 +7,13 @@
 Criar um Programa que realize:
 
 1-Cadastro de produto OK
-2-realizar venda
-3-conferencia de estoque
+    1- Impressão dos produtos por seção OK
+
+2- realizar venda
+    1- Metodos Debito e Credito criadas. OK
+    2 -conferencia de estoque
 ___________________________________________________________
+
 1-Cadastro de produto:
 
     1.a -Massas (OK)
@@ -19,16 +23,40 @@ ___________________________________________________________
     1.c Sorvetes(OK)
     Ja esta cadastrando + de 1 produto (OK)
 
-Proxima atividade:
-
+Proxima atividade: 26/10/2023
 Cadastro da Seção de sorvetes. OK
 Criar um menu organizado para o Usuario. OK
 incluir esse menu no termino do processo. OK
 Criar a opção que vai sair do while.      OK
 Criar uma impressão organizada dos valores. OK
-Subir para o Github
-___________________________________________________________
+Subir para o Repositorio (OK)
+______________________________________________________________________________________________________________________
+
+Proxima atividade: 27/10/2023
+
+Seção de venda de produto
+
+Usuario escolher a seção: OK
+Usuario escolher o produto: OK
+informar a quantidade desejada: OK
+vereficicar se a quantidade e multiplicar pelo preço unitariodo produto: OK
+imprimir o valor: OK
+verificar se o total é correspondente ao saldo do usuario: OK
+Conferencia de estoque antes de realizar a venda. OK
+tomar a decisão de compra: OK
+
+________________________________________________________________________________
+Proxima atividade: 28/10/2023
+
+Depositar valor na conta do Usuario para executar o teste:
+- Seção de Vendas
+Controle de estoque - Conferir se os valores debitados, estão sendo subtraidos da conta do Usuário.
+- subtrair a quantdade correspondente da compra do produto no estoque.
+- Criar uma mensagem de alerta para que o Dono da padaria saiba que está
+acabando e possa fazer reposição do produto.
+Fazer integração com o menu principal.
 
 
 
+subtrair a quantidade do produto no estoque conferir se o saldo também foi subtraido.
 
