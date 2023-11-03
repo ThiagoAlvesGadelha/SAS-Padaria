@@ -56,7 +56,22 @@ Controle de estoque - Conferir se os valores debitados, estão sendo subtraidos 
 acabando e possa fazer reposição do produto.
 Fazer integração com o menu principal.
 
-
-
 subtrair a quantidade do produto no estoque conferir se o saldo também foi subtraido.
 
+obs1: alteração feita na impressão dos itens
+procurar entender porque os produtos não estão sendo imrpessos no metodo
+o menu de seleção do produto não esta funcionando
+hipotese 1 : deve ser pelo mesmo erro de não esta imprimindo, os valores
+ cadastrados não estão sendo anexados a classe
+
+ Obs2: Realizar reeleitura da obs1, porem a impressão dos itens foi corrigida,
+ lembrar de realizar o cadastro de mais de 1 produto para conferir se esta totalmente Ok.
+
+ ver a funcionalidade escolher o produto disponivel para seguir com a compra.
+
+
+ Cadastro de produto
+ venda
+ conferencia de estoque
+
+ lembrar de alterar os dados das outras classes e opções

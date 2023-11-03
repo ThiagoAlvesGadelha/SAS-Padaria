@@ -7,10 +7,18 @@ public class Programa {
         BalcaoPadaria balcaoPadaria = new BalcaoPadaria();
         GeladeiraBebidas geladeiraBebidas = new GeladeiraBebidas();
         FreezerSorvetes freezerSorvetes = new FreezerSorvetes();
-        Operacoes menu = new Operacoes(balcaoPadaria,geladeiraBebidas, freezerSorvetes);
+        Usuario novo = new Usuario();
+        Operacoes usuario = new Operacoes(balcaoPadaria,geladeiraBebidas, freezerSorvetes,novo);
 
-        menu.menu();
-        for (Massas elemento : balcaoPadaria.getMassas()) {
+
+        novo.setSaldo(2000);
+        System.out.println(novo.getSaldo());
+        usuario.menu();
+        usuario.Comprarproduto();
+
+    }
+}
+/*for (Massas elemento : balcaoPadaria.getMassas()) {
             System.out.println("Seção Balcão de Massas \n" +
                     "Nome do produto: "+ elemento.getNome()+". \n " +
                     "Codigo do Produto: "+ elemento.getCodigo()+". \n" +
@@ -32,6 +40,4 @@ public class Programa {
                     "Codigo do Produto: "+ elemento.getCodigo()+". \n" +
                     "Preço da und: "+elemento.getValorUnitario()+". \n" +
                     "Estoque disponível: "+elemento.getEstoque()+". \n");
-        }
-    }
-}
+        }*/

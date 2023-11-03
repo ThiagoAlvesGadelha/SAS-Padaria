@@ -7,13 +7,16 @@ public class Operacoes {
     private BalcaoPadaria balcao;
     private GeladeiraBebidas geladeira;
     private FreezerSorvetes freezer;
-    public Usuario saldo;
+    public Usuario usuario;
     public double novosaldo;
+    public int numero;
 
-    public Operacoes(BalcaoPadaria balcao, GeladeiraBebidas geladeira, FreezerSorvetes freezer) {
+
+    public Operacoes(BalcaoPadaria balcao, GeladeiraBebidas geladeira, FreezerSorvetes freezerSorvetes, Usuario novo) {
         this.balcao = balcao;
         this.geladeira = geladeira;
-        this.freezer = freezer;
+        this.freezer = freezerSorvetes;
+        this.usuario = novo;
     }
     public void menu() {
         Scanner scan = new Scanner(System.in);
@@ -47,9 +50,9 @@ public class Operacoes {
             System.out.println("Produto Cadastrado!");
             System.out.println("___________________________________");
             System.out.println("Ainda vamos fazer algo?");
-            System.out.println("Digite 1 para =  Balcão padaria");
-            System.out.println("Digite 2 para = Bebidas");
-            System.out.println("Digite 3 para = Sorvetes");
+            System.out.println("Digite 1 para cadastrar um produto da seção Balcão padaria");
+            System.out.println("Digite 2 para cadastrar um produto da seção Bebidas");
+            System.out.println("Digite 3 para cadastrar um produto da seção Sorvetes");
             System.out.println("Digite 4 para = Sair");
             System.out.println("___________________________________");
             opcao = scan.nextInt();
@@ -76,9 +79,9 @@ public class Operacoes {
             System.out.println("Produto Cadastrado!");
             System.out.println("___________________________________");
             System.out.println("Ainda vamos fazer algo?");
-            System.out.println("Digite 1 para =  Balcão padaria");
-            System.out.println("Digite 2 para = Bebidas");
-            System.out.println("Digite 3 para = Sorvetes");
+            System.out.println("Digite 1 para cadastrar um produto da seção Balcão padaria");
+            System.out.println("Digite 2 para cadastrar um produto da seção Bebidas");
+            System.out.println("Digite 3 para cadastrar um produto da seção Sorvetes");
             System.out.println("Digite 4 para = Sair");
             System.out.println("___________________________________");
             opcao = scan.nextInt();
@@ -105,9 +108,9 @@ public class Operacoes {
             System.out.println("Produto Cadastrado!");
             System.out.println("___________________________________");
             System.out.println("Ainda vamos fazer algo?");
-            System.out.println("Digite 1 para =  Balcão padaria");
-            System.out.println("Digite 2 para = Bebidas");
-            System.out.println("Digite 3 para = Sorvetes");
+            System.out.println("Digite 1 para cadastrar um produto da seção Balcão padaria");
+            System.out.println("Digite 2 para cadastrar um produto da seção Bebidas");
+            System.out.println("Digite 3 para cadastrar um produto da seção Sorvetes");
             System.out.println("Digite 4 para = Sair");
             System.out.println("___________________________________");
             opcao = scan.nextInt();
@@ -120,17 +123,17 @@ public class Operacoes {
         }
     }
     public void Credito(double valor){
-        this.saldo.setSaldo(valor);
+        this.usuario.setSaldo(valor);
     }
     public void Debito(double valor){
-        this.novosaldo = this.saldo.getSaldo() - valor;
-        this.saldo.setSaldo(this.novosaldo);
-        if (valor > this.saldo.getSaldo()){
+        this.novosaldo = this.usuario.getSaldo() - valor;
+        this.usuario.setSaldo(this.novosaldo);
+        if (valor > this.usuario.getSaldo()){
             System.out.println("Compra não aprovada \n" +
-                    "Seu saldo é: R$ " + this.saldo +".");
+                    "Seu saldo é: R$ " + this.usuario.getSaldo() +".");
         }else{
             System.out.println("Compra aprovada no valor de : R$ " + valor +".");
-            System.out.println("Saldo disponível: R$ "+this.saldo);
+            System.out.println("Saldo disponível: R$ "+this.usuario.getSaldo());
         }
     }
     public void ListProdutosBalcaoPadaria(){
@@ -159,10 +162,9 @@ public class Operacoes {
         }
     }
     public void ListProdutosFreezerSorvetes(){
-        FreezerSorvetes freezerSorvetes = new FreezerSorvetes();
-        for (Sorvetes elemento : freezerSorvetes.getSorvetes()) {
-            int numero = 0;
-            System.out.println("Seção Balcão");
+        int numero = 0;
+        for (Sorvetes elemento : this.freezer.getSorvetes()) {
+            System.out.println("Seção Sorvetes");
             System.out.println("Produto - " + numero++ +"\n"+
                     "Nome do produto: "+ elemento.getNome()+". \n " +
                     "Codigo do Produto: "+ elemento.getCodigo()+". \n" +
@@ -173,11 +175,16 @@ public class Operacoes {
     }
     public void Comprarproduto(){
         Scanner scan = new Scanner(System.in);
+
+
         System.out.println("Escolha a seção que gostaria de comprar");
         System.out.println("Digite 1 para: Seção Freezer");
         System.out.println("Digite 2 para: Seção Balcão");
         System.out.println("Digite 3 para: Seção Geladeira");
+        System.out.println("Digite 4 para: Sair");
         opcao = scan.nextInt();scan.nextLine();
+
+        if (opcao ==4)return;
 
         while (opcao < 1 || opcao > 3){
             System.out.println("Digite uma opção valida");
@@ -185,24 +192,23 @@ public class Operacoes {
         }
 
         while (opcao == 1){
-            FreezerSorvetes freezerSorvetes = new FreezerSorvetes();
             System.out.println("Seja bem vindo a Seção Freezer");
             System.out.println("Esses são nossos produtos disponíveis");
             ListProdutosFreezerSorvetes();
 
-            int quantidadeItens = freezerSorvetes.getSorvetes().size();
+            int quantidadeItens = this.freezer.getSorvetes().size();
 
             System.out.println("Digite: 1 para: Produto 1 \n" +
                     "Ou digite outro numero para escolher outro produto");
             int numero = scan.nextInt();scan.nextLine();
 
-            while (numero < 1 || numero > quantidadeItens ){
+            while (numero < -1 || numero > quantidadeItens ){
                 System.out.println("Digite um numero valido");
                 numero = scan.nextInt();scan.nextLine();
             }
-            int indiceDesejado = numero--;
-            Sorvetes elementoDesejado = freezerSorvetes.getSorvetes().get(indiceDesejado);
-            System.out.println("Seção Balcão de Massas \n" +
+            int indiceDesejado = --numero;
+            Sorvetes elementoDesejado = this.freezer.getSorvetes().get(indiceDesejado);
+            System.out.println("Seção Sorvetes \n" +
                     "Nome do produto: " + elementoDesejado.getNome() + ". \n " +
                     "Codigo do Produto: " + elementoDesejado.getCodigo() + ". \n" +
                     "Preço da und: " + elementoDesejado.getValorUnitario() + ". \n" +
@@ -211,7 +217,7 @@ public class Operacoes {
             System.out.println("Quantas unidades vai querer ?");
             numero = scan.nextInt();scan.nextLine();
 
-            while (numero < elementoDesejado.getEstoque() ||numero > elementoDesejado.getEstoque()){
+            while (numero <= 0 || numero > elementoDesejado.getEstoque()){
                 System.out.println("Nosso estoque é de apenas: "+ elementoDesejado.getEstoque());
                 System.out.println("Digite um numero valido");
                 System.out.println("Quantas unidades vai querer ?");
@@ -220,15 +226,21 @@ public class Operacoes {
 
             double total = numero * elementoDesejado.getValorUnitario();
             System.out.println("O total é de: R$ " + total);
-            System.out.println("Insira seu cartão de Debito");
-            if (total > this.saldo.getSaldo()){
+            System.out.println("Aguarde um momento enquanto a transação é executada");
+            if (total > this.usuario.getSaldo()){
                 System.out.println("Compra não aprovada \n" +
-                        "Seu saldo é: R$ " + this.saldo +".");
+                        "Seu saldo é: R$ " + this.usuario.getSaldo() +".");
                 System.out.println("A operação será finalizada, e o senhor poderá retornar quando for resolvido.");
             } else {
                 Debito(total);
+                elementoDesejado.setEstoque(elementoDesejado.getEstoque() - numero);
                 System.out.println("Obrigado e volte sempre");
             }
+            System.out.println("Deseja algum outro produto ?");
+            System.out.println("Digite 1 para ir ao menu ou 2 para sair");
+            numero = scan.nextInt();scan.nextLine();
+            if( numero == 1 ) this.Comprarproduto();
+            else opcao =4;
         }
 
         while (opcao == 2){
@@ -247,7 +259,7 @@ public class Operacoes {
                 System.out.println("Digite um numero valido");
                 numero = scan.nextInt();scan.nextLine();
             }
-            int indiceDesejado = numero--;
+            int indiceDesejado = --numero;
             Massas elementoDesejado = balcaoPadaria.getMassas().get(indiceDesejado);
             System.out.println("Seção Balcão de Massas \n" +
                     "Nome do produto: " + elementoDesejado.getNome() + ". \n " +
@@ -268,9 +280,9 @@ public class Operacoes {
             double total = numero * elementoDesejado.getValorUnitario();
             System.out.println("O total é de: R$ " + total);
             System.out.println("Insira seu cartão de Debito");
-            if (total > this.saldo.getSaldo()){
+            if (total > this.usuario.getSaldo()){
                 System.out.println("Compra não aprovada \n" +
-                        "Seu saldo é: R$ " + this.saldo +".");
+                        "Seu saldo é: R$ " + this.usuario +".");
                 System.out.println("A operação será finalizada, e o senhor poderá retornar quando for resolvido.");
             } else {
                 Debito(total);
@@ -315,9 +327,9 @@ public class Operacoes {
             double total = numero * elementoDesejado.getValorUnitario();
             System.out.println("O total é de: R$ " + total);
             System.out.println("Insira seu cartão de Debito");
-            if (total > this.saldo.getSaldo()){
+            if (total > this.usuario.getSaldo()){
                 System.out.println("Compra não aprovada \n" +
-                        "Seu saldo é: R$ " + this.saldo +".");
+                        "Seu saldo é: R$ " + this.usuario +".");
                 System.out.println("A operação será finalizada, e o senhor poderá retornar quando for resolvido.");
             } else {
                 Debito(total);
