@@ -1,6 +1,6 @@
 # SAS-Padaria
 
-## Meu App Padaria Funcionalidades:
+## Meu App Padaria e suas Funcionalidades
 
 ### Menu de Cadastro
 *Realiza o Cadastro do produto com as descrições do produto:
@@ -22,8 +22,8 @@ expecifica.
 *Realiza Credito de saldo para o usuario.
 *Realiza Debito do saldo do usuario.
 
-#### Desafios
-### - Neste Projeto pude desenvolver minhas habilidades que foram adquiradas no curso basico de JAVA como extruturas de repetição e Programação orientada a objeto.
-### - Esse proejto foi criado para servi como portifolio de um CRUD com JAVA BASICO.
-### Fiquei bastante feliz com o resultado e termino esse projeto mais confiante e pronto para iniciar os estudos para transformar toda essa operação em uma API.
+### Desafios
+Neste Projeto pude desenvolver minhas habilidades que foram adquiradas no curso basico de JAVA como extruturas de repetição e Programação orientada a objeto.
+Esse proejto foi criado para servi como portifolio de um CRUD com JAVA BASICO.
+Fiquei bastante feliz com o resultado e termino esse projeto mais confiante e pronto para iniciar os estudos para transformar toda essa operação em uma API.
 
