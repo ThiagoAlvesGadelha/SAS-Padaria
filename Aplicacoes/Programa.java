@@ -10,34 +10,8 @@ public class Programa {
         Usuario novo = new Usuario();
         Operacoes usuario = new Operacoes(balcaoPadaria,geladeiraBebidas, freezerSorvetes,novo);
 
-
         novo.setSaldo(2000);
-        System.out.println(novo.getSaldo());
-        usuario.menu();
-        usuario.Comprarproduto();
+        usuario.menuPrincipal();
 
     }
 }
-/*for (Massas elemento : balcaoPadaria.getMassas()) {
-            System.out.println("Seção Balcão de Massas \n" +
-                    "Nome do produto: "+ elemento.getNome()+". \n " +
-                    "Codigo do Produto: "+ elemento.getCodigo()+". \n" +
-                    "Preço da und: "+elemento.getValorUnitario()+". \n" +
-                    "Estoque disponível: "+elemento.getEstoque()+". \n");
-        }
-
-        for (Bebidas elemento : geladeiraBebidas.getBebidas()) {
-            System.out.println("Seção Geladeira de Bebidas \n" +
-                    "Nome do produto: "+ elemento.getNome()+". \n " +
-                    "Codigo do Produto: "+ elemento.getCodigo()+". \n" +
-                    "Preço da und: "+elemento.getValorUnitario()+". \n" +
-                    "Estoque disponível: "+elemento.getEstoque()+". \n");
-        }
-
-        for (Sorvetes elemento : freezerSorvetes.getSorvetes()) {
-            System.out.println("Seção Freezer de Sorvetes \n" +
-                    "Nome do produto: "+ elemento.getNome()+". \n " +
-                    "Codigo do Produto: "+ elemento.getCodigo()+". \n" +
-                    "Preço da und: "+elemento.getValorUnitario()+". \n" +
-                    "Estoque disponível: "+elemento.getEstoque()+". \n");
-        }*/

@@ -1,0 +1,28 @@
+Meu App Padaria Funcionalidades:
+
+Menu de Cadastro {
+Realiza o Cadastro do produto com as descrições do produto:
+(Nome, Codigo, Valor Unitario e Estoque).
+O Usuario poderá cadastrar cada produto de acordo com sua seção
+expecifica.
+
+}
+
+Venda de produto {
+Realiza a venda do produto que foi cadastrado através do
+Menu de Cadastro.
+Realiza o Check do Estoque do usuario para aprovar a compra.
+Realiza o Check do Saldo do usuario para aprovar a compra.
+Realiza o debito do saldo  da conta do usuario.
+Realiza a subtração da quantidade do produto no estoque.
+
+OBS = O programa não permite que o usuario realize a compra
+com o saldo inferior ao preço total do produto assim como
+não permite que o usuario compre um produto em uma quantidade
+maior que o estoque.
+}
+
+Financeiro {
+Realiza Credito de saldo para o usuario.
+Realiza Debito do saldo do usuario.
+}

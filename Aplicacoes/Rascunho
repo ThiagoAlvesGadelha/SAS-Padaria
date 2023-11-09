@@ -75,3 +75,10 @@ hipotese 1 : deve ser pelo mesmo erro de não esta imprimindo, os valores
  conferencia de estoque
 
  lembrar de alterar os dados das outras classes e opções
+ ______________________________________________________________________________________________
+ 07/11
+
+Financeiro:
+ Criar opção de checar saldo da conta
+ e adcionar possibilidade de creditar saldo para o usuario.
+ajustar seleção do menu principal
