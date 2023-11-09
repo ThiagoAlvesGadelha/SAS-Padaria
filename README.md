@@ -22,8 +22,8 @@ expecifica.
 *Realiza Credito de saldo para o usuario.
 *Realiza Debito do saldo do usuario.
 
-## Desafios
+#### Desafios
 ### - Neste Projeto pude desenvolver minhas habilidades que foram adquiradas no curso basico de JAVA como extruturas de repetição e Programação orientada a objeto.
 ### - Esse proejto foi criado para servi como portifolio de um CRUD com JAVA BASICO.
-### Fiquei bastante feliz com o resultado e termino esse projeto mais confiando e pronto para iniciar os estudos para transformar toda essa operação em uma API.
+### Fiquei bastante feliz com o resultado e termino esse projeto mais confiante e pronto para iniciar os estudos para transformar toda essa operação em uma API.
 
